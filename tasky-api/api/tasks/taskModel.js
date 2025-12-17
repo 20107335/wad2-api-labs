@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const TaskSchema = new Schema({
 title: { type: String, required: true },
 priority: { type: String, enum: ["Low", "Medium", "High"], required: true },
+  userId: { type: Schema.Types.ObjectId, ref: 'User'},
   description:  String ,
   deadline: Date,
   done: Boolean,
