@@ -1,34 +1,21 @@
-const baseUrl = "http://localhost:8080/api/tasks";
-
-export const getTasks = async () => {
-  const response = await fetch(baseUrl);
-  return response.json();
+export const login = async (username, password) => {
+    const response = await fetch('http://localhost:8080/api/users', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    });
+    return response.json();
 };
 
-export const addTask = async (task) => {
-  const response = await fetch(baseUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(task)
-  });
-  return response.json();
-};
-
-export const updateTask = async (task) => {
-  const response = await fetch(`${baseUrl}/${task._id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(task)
-  });
-  return response.json();
-};
-
-export const deleteTask = async (id) => {
-  await fetch(`${baseUrl}/${id}`, {
-    method: "DELETE"
-  });
+export const signup = async (username, password) => {
+    const response = await fetch('http://localhost:8080/api/users?action=register', {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, password: password })
+    });
+    return response.json();
 };
