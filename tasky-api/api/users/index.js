@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
     res.status(200).json(users);
 });
 
-
 // register(Create)/Authenticate User
 router.post('/', asyncHandler(async (req, res) => {
     try {
@@ -29,9 +28,6 @@ router.post('/', asyncHandler(async (req, res) => {
         res.status(500).json({ success: false, msg: 'Internal server error.' });
     }
 }));
-
-// ... Code as before
-
 
 async function registerUser(req, res) {
     // Add input validation logic here
